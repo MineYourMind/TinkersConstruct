@@ -1,7 +1,7 @@
 package tconstruct.items.armor;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
@@ -12,8 +12,8 @@ import tconstruct.items.CraftingItem;
 import tconstruct.library.IHealthAccessory;
 import tconstruct.util.player.ArmorExtended;
 import tconstruct.util.player.TPlayerStats;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class HeartCanister extends CraftingItem implements IHealthAccessory
 {
@@ -36,7 +36,7 @@ public class HeartCanister extends CraftingItem implements IHealthAccessory
         if (!world.isRemote && meta == 2)
         {
             TPlayerStats stats = TConstruct.playerTracker.getPlayerStats(player.username);
-            if (stats != null)
+            if (stats != null && stats.armor != null)
             {
                 ArmorExtended armor = stats.armor;
                 ItemStack slotStack = armor.getStackInSlot(6);
